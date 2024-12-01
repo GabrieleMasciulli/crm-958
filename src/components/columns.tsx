@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { ColumnDef } from "@tanstack/react-table"
-import { Badge } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
+import { ColumnDef } from "@tanstack/react-table";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,20 +10,20 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
-import { MoreHorizontal } from "lucide-react"
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { MoreHorizontal } from "lucide-react";
 
 export type Sale = {
-  id: string
-  date: string
-  product: string
-  agent: string
-  region: string
-  amount: number
-  quantity: number
-  status: string
-}
+  id: string;
+  date: string;
+  product: string;
+  agent: string;
+  region: string;
+  amount: number;
+  quantity: number;
+  status: string;
+};
 
 export const columns: ColumnDef<Sale>[] = [
   {
@@ -47,11 +47,11 @@ export const columns: ColumnDef<Sale>[] = [
   },
   {
     accessorKey: "date",
-    header: "Date",
+    header: "Data",
   },
   {
     accessorKey: "product",
-    header: "Product",
+    header: "Produzione",
   },
   {
     accessorKey: "agent",
@@ -59,42 +59,40 @@ export const columns: ColumnDef<Sale>[] = [
   },
   {
     accessorKey: "region",
-    header: "Region",
+    header: "Regione",
   },
   {
     accessorKey: "amount",
     header: "Amount",
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
+      const amount = parseFloat(row.getValue("amount"));
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-      }).format(amount)
-      return formatted
+      }).format(amount);
+      return formatted;
     },
   },
   {
     accessorKey: "quantity",
-    header: "Quantity",
+    header: "Quantità",
   },
   {
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => {
-      const status = row.getValue("status") as string
+      const status = row.getValue("status") as string;
       return (
-        <Badge
-          variant={status === "completed" ? "default" : "secondary"}
-        >
+        <Badge variant={status === "completed" ? "default" : "secondary"}>
           {status}
         </Badge>
-      )
+      );
     },
   },
   {
     id: "actions",
     cell: ({ row }) => {
-      const sale = row.original
+      const sale = row.original;
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -115,8 +113,7 @@ export const columns: ColumnDef<Sale>[] = [
             <DropdownMenuItem>View payment</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
+      );
     },
   },
-]
-
+];
