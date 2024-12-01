@@ -1,5 +1,5 @@
-import Agents from "@/components/agents";
+import Agents from '@/components/agents'
 
 export default function Home() {
-  return <Agents />;
+  return <Agents />
 }
