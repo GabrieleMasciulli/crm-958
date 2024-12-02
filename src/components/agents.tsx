@@ -1,12 +1,69 @@
 "use client";
 
 import agentSummary from "@/lib/data/agentsData";
-import { BeakerIcon } from "@heroicons/react/24/solid";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@radix-ui/react-select";
+import { Input } from "./ui/input";
 
 export default function Agents() {
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">Riepilogo Agenti</h1>
+      <div className="flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
+        <div className="flex items-center space-x-4">
+          <Select defaultValue="all">
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Seleziona Regione" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tutte le Regioni</SelectItem>
+              <SelectItem value="abruzzo">Abruzzo</SelectItem>
+              <SelectItem value="basilicata">Basilicata</SelectItem>
+              <SelectItem value="calabria">Calabria</SelectItem>
+              <SelectItem value="campania">Campania</SelectItem>
+              <SelectItem value="emilia-romagna">Emilia-Romagna</SelectItem>
+              <SelectItem value="friuli-venezia-giulia">
+                Friuli-Venezia Giulia
+              </SelectItem>
+              <SelectItem value="lazio">Lazio</SelectItem>
+              <SelectItem value="liguria">Liguria</SelectItem>
+              <SelectItem value="lombardia">Lombardia</SelectItem>
+              <SelectItem value="marche">Marche</SelectItem>
+              <SelectItem value="molise">Molise</SelectItem>
+              <SelectItem value="piemonte">Piemonte</SelectItem>
+              <SelectItem value="puglia">Puglia</SelectItem>
+              <SelectItem value="sardegna">Sardegna</SelectItem>
+              <SelectItem value="sicilia">Sicilia</SelectItem>
+              <SelectItem value="toscana">Toscana</SelectItem>
+              <SelectItem value="trentino-alto-adige">
+                Trentino-Alto Adige
+              </SelectItem>
+              <SelectItem value="umbria">Umbria</SelectItem>
+              <SelectItem value="valle-d-aosta">Valle d Aosta</SelectItem>
+              <SelectItem value="veneto">Veneto</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select defaultValue="all">
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select Agent" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tutti gli agenti</SelectItem>
+              <SelectItem value="direct">Agenti Diretti</SelectItem>
+              <SelectItem value="agents">Agenti Affiliati</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex-1">
+          <Input placeholder="Search products, agents, or regions..." />
+        </div>
+      </div>
       <div className="space-y-4">
         {agentSummary.map((agent, index) => (
           <div

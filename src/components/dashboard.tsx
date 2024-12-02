@@ -83,7 +83,7 @@ export default function Dashboard() {
                   Trentino-Alto Adige
                 </SelectItem>
                 <SelectItem value="umbria">Umbria</SelectItem>
-                <SelectItem value="valle-d-aosta">Valle d'Aosta</SelectItem>
+                <SelectItem value="valle-d-aosta">Valle d Aosta</SelectItem>
                 <SelectItem value="veneto">Veneto</SelectItem>
               </SelectContent>
             </Select>

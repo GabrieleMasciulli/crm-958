@@ -9,7 +9,7 @@ const agentSummary = [
   },
   {
     name: "Giulia Bianchi",
-    totalSales: 1,
+    totalSales: 100,
     regions: ["Tuscany"],
     totalAmount: 2100,
     totalClients: 1,
@@ -17,7 +17,7 @@ const agentSummary = [
   },
   {
     name: "Marco Verdi",
-    totalSales: 1,
+    totalSales: 5,
     regions: ["Veneto"],
     totalAmount: 4500,
     totalClients: 1,
@@ -33,7 +33,7 @@ const agentSummary = [
   },
   {
     name: "Alessandro Moretti",
-    totalSales: 1,
+    totalSales: 120,
     regions: ["Abruzzo"],
     totalAmount: 2800,
     totalClients: 1,
@@ -41,7 +41,7 @@ const agentSummary = [
   },
   {
     name: "Federica Esposito",
-    totalSales: 1,
+    totalSales: 1000,
     regions: ["Marche"],
     totalAmount: 1700,
     totalClients: 1,
@@ -49,7 +49,7 @@ const agentSummary = [
   },
   {
     name: "Claudio Romano",
-    totalSales: 1,
+    totalSales: 1200,
     regions: ["Sicily"],
     totalAmount: 3100,
     totalClients: 1,
@@ -57,7 +57,7 @@ const agentSummary = [
   },
   {
     name: "Chiara Conti",
-    totalSales: 1,
+    totalSales: 354,
     regions: ["Emilia-Romagna"],
     totalAmount: 1300,
     totalClients: 1,
@@ -65,7 +65,7 @@ const agentSummary = [
   },
   {
     name: "Roberto Gallo",
-    totalSales: 1,
+    totalSales: 3000,
     regions: ["Puglia"],
     totalAmount: 3500,
     totalClients: 1,
@@ -73,7 +73,7 @@ const agentSummary = [
   },
   {
     name: "Martina Ferri",
-    totalSales: 1,
+    totalSales: 1321,
     regions: ["Lombardy"],
     totalAmount: 4200,
     totalClients: 1,
