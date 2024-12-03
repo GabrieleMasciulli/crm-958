@@ -1,8 +1,6 @@
-import { useRouter } from "next/router";
 import products from "@/lib/data/salesData"; // Importa i dati del progetto
 
 const ProjectPage = () => {
-  //const router = useRouter();
   const id = "1";
 
   const product = products.find((product) => product.id === id);
