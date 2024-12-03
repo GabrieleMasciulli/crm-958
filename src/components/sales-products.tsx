@@ -1,6 +1,5 @@
 "use client";
 
-import salesData from "@/lib/data/salesData";
 import { redirect } from "next/navigation";
 import {
   Card,
@@ -9,32 +8,34 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
+import products from "@/lib/data/productsData"; // Import dei dati
 
 export default function SalesProductsPage() {
-  const filteredSales = salesData;
-
   return (
     <div>
       <h1 className="text-4xl text-center p-10">Sales Products</h1>
       <div className="grid grid-cols-4 gap-4">
-        {filteredSales.map((sale) => (
-          <Card
-            key={sale.id}
-            className="mb-4"
-            onClick={() => {
-              redirect(`/product/${sale.id}`);
-            }}
+        {products.map((product) => (
+          <Link
+            key={product.id}
+            href={`products/product/${product.id}`}
+            passHref
           >
-            <CardHeader>
-              <CardTitle>{sale.product}</CardTitle>
-              <CardDescription>{sale.date}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>Sales: {sale.product}</p>
-              <p>Units Sold: {sale.amount}</p>
-              <p>Agent Sales: {sale.agent}</p>
-            </CardContent>
-          </Card>
+            <Card className="mb-4">
+              <CardHeader>
+                <CardTitle>{product.name}</CardTitle>
+                <CardDescription>{product.quantityAvailable}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Prezzo al dettaglio: {product.price}</p>
+                <p>Regione di provenienza: {product.region}</p>
+                {product.agents.map((agent) => (
+                  <p key={agent}>Agente: {agent}</p>
+                ))}
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>

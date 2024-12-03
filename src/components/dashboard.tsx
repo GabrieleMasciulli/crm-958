@@ -24,10 +24,9 @@ import { GeographicDistribution } from "@/components/geographic-distribution";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Download, RefreshCw } from "lucide-react";
-import salesData from "@/lib/data/salesData";
+import salesData from "@/lib/data/ordersData";
 import Link from "next/link";
 import { DateRange } from "react-day-picker";
-import { redirect } from "next/navigation";
 // Sample data - in a real app, this would come from your backend
 
 export default function Dashboard() {
@@ -109,34 +108,34 @@ export default function Dashboard() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Card
-            onClick={() => {
-              redirect("/products");
-            }}
-          >
-            <CardHeader>
-              <CardTitle>Vendite Totali</CardTitle>
-              <CardDescription>Periodo totale di vendite</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">€123,456</div>
-              <p className="text-xs text-muted-foreground">
-                +20.1% dal periodo precedente
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Unità vendute</CardTitle>
-              <CardDescription>Totale prodotti venduti</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">1,234</div>
-              <p className="text-xs text-muted-foreground">
-                +12.4% dal periodo precedente
-              </p>
-            </CardContent>
-          </Card>
+          <Link href="/products" passHref>
+            <Card>
+              <CardHeader>
+                <CardTitle>Vendite Totali</CardTitle>
+                <CardDescription>Periodo totale di vendite</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">€123,456</div>
+                <p className="text-xs text-muted-foreground">
+                  +20.1% dal periodo precedente
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/agents" passHref>
+            <Card>
+              <CardHeader>
+                <CardTitle>Unità vendute</CardTitle>
+                <CardDescription>Totale prodotti venduti</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">1,234</div>
+                <p className="text-xs text-muted-foreground">
+                  +12.4% dal periodo precedente
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
           <Link href="/agents" passHref>
             <Card>
               <CardHeader>
