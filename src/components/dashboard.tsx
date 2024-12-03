@@ -26,10 +26,11 @@ import { Button } from "@/components/ui/button";
 import { Download, RefreshCw } from "lucide-react";
 import salesData from "@/lib/data/salesData";
 import Link from "next/link";
+import { DateRange } from "react-day-picker";
 // Sample data - in a real app, this would come from your backend
 
 export default function Dashboard() {
-  const [dateRange, setDateRange] = useState({
+  const [dateRange, setDateRange] = useState<DateRange>({
     from: new Date(2024, 0, 1),
     to: new Date(),
   });
@@ -83,7 +84,9 @@ export default function Dashboard() {
                   Trentino-Alto Adige
                 </SelectItem>
                 <SelectItem value="umbria">Umbria</SelectItem>
-                <SelectItem value="valle-d-aosta">Valle d Aosta</SelectItem>
+                <SelectItem value="valle-d-aosta">
+                  Valle d&apos;Aosta
+                </SelectItem>
                 <SelectItem value="veneto">Veneto</SelectItem>
               </SelectContent>
             </Select>
