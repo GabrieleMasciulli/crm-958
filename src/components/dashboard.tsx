@@ -27,6 +27,7 @@ import { Download, RefreshCw } from "lucide-react";
 import salesData from "@/lib/data/salesData";
 import Link from "next/link";
 import { DateRange } from "react-day-picker";
+import { redirect } from "next/navigation";
 // Sample data - in a real app, this would come from your backend
 
 export default function Dashboard() {
@@ -108,7 +109,11 @@ export default function Dashboard() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
+          <Card
+            onClick={() => {
+              redirect("/products");
+            }}
+          >
             <CardHeader>
               <CardTitle>Vendite Totali</CardTitle>
               <CardDescription>Periodo totale di vendite</CardDescription>
