@@ -16,11 +16,7 @@ export default function SalesProductsPage() {
       <h1 className='text-4xl text-center p-10'>Sales Products</h1>
       <div className='grid grid-cols-4 gap-4'>
         {products.map(product => (
-          <Link
-            key={product.id}
-            href={`products/product/${product.id}`}
-            passHref
-          >
+          <Link key={product.id} href={`products/${product.id}`}>
             <Card className='mb-4'>
               <CardHeader>
                 <CardTitle>{product.name}</CardTitle>
