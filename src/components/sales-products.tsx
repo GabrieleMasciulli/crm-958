@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Card,
@@ -6,20 +6,20 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import Link from "next/link";
-import products from "@/lib/data/productsData"; // Import dei dati
-import FilterBar from "./ui/filter-bar";
+} from '@/components/ui/card'
+import Link from 'next/link'
+import products from '@/lib/data/productsData' // Import dei dati
+import FilterBar from './ui/filter-bar'
 
 export default function SalesProductsPage() {
   return (
     <div>
-      <h1 className="text-4xl text-center p-10">Sales Products</h1>
+      <h1 className='text-4xl text-center p-10'>Sales Products</h1>
       <FilterBar />
-      <div className="grid grid-cols-4 gap-4 px-3">
+      <div className='grid grid-cols-4 gap-4 px-3'>
         {products.map((product) => (
           <Link key={product.id} href={`products/${product.id}`}>
-            <Card className="mb-4">
+            <Card className='mb-4'>
               <CardHeader>
                 <CardTitle>{product.name}</CardTitle>
                 <CardDescription>{product.quantityAvailable}</CardDescription>
@@ -36,5 +36,5 @@ export default function SalesProductsPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }
