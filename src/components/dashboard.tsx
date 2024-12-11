@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from 'react'
 import {
   Card,
   CardContent,
@@ -9,28 +6,18 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-import { DatePickerWithRange } from '@/components/date-range-picker'
 import { DataTable } from '@/components/data-table'
 import { columns } from '@/components/columns'
 import { SalesChart } from '@/components/sales-chart'
 import { AgentPerformanceChart } from '@/components/agent-performance'
 import { GeographicDistribution } from '@/components/geographic-distribution'
-import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Download, RefreshCw } from 'lucide-react'
 import salesData from '@/lib/data/ordersData'
 import Link from 'next/link'
-import { DateRange } from 'react-day-picker'
 import FilterBar from './ui/filter-bar'
 
-// Sample data - in a real app, this would come from your backend
-
 export default function Dashboard() {
-  const [dateRange, setDateRange] = useState<DateRange>({
-    from: new Date(2024, 0, 1),
-    to: new Date(),
-  })
-
   return (
     <div className='flex min-h-screen flex-col'>
       <div className='border-b'>
@@ -138,7 +125,7 @@ export default function Dashboard() {
           <CardContent>
             <DataTable
               columns={columns}
-              data={salesData.map((sale) => ({
+              data={salesData.map(sale => ({
                 ...sale,
                 product: '',
                 amount: sale.totalPrice,
