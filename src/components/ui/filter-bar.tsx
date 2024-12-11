@@ -19,7 +19,7 @@ export default function FilterBar() {
   })
 
   return (
-    <div className='flex flex-col  px-4 py-4 space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0'>
+    <div className='flex flex-col px-8 py-4 space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0'>
       <div className='flex items-center space-x-4'>
         <DatePickerWithRange date={dateRange} setDate={setDateRange} />
         <Select defaultValue='all'>
