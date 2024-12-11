@@ -9,7 +9,13 @@ import { OrdersChart } from './orders-chart'
 import { AgentProductivityChart } from './agent-productivity-chart'
 import { ProductivityOverTimeChart } from './productivity-over-time-chart'
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default async function Product({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const id = (await params).id
+
   return (
     <div className='flex flex-col gap-6 p-4 md:gap-8 md:p-10'>
       <div className='flex items-center gap-4'>
@@ -25,7 +31,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       </div>
 
       <Suspense fallback={<ProductDetailsSkeleton />}>
-        <ProductDetails id={params.id} />
+        <ProductDetails id={id} />
       </Suspense>
 
       <div className='grid gap-6'>
@@ -35,7 +41,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <CardTitle>Panoramica degli Ordini</CardTitle>
             </CardHeader>
             <CardContent className='p-0'>
-              <OrdersChart productId={params.id} />
+              <OrdersChart productId={id} />
             </CardContent>
           </Card>
           <Card className='lg:col-span-3'>
@@ -43,7 +49,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <CardTitle>Produttività dell&apos;Agente</CardTitle>
             </CardHeader>
             <CardContent className='p-0'>
-              <AgentProductivityChart productId={params.id} />
+              <AgentProductivityChart productId={id} />
             </CardContent>
           </Card>
         </div>
@@ -52,7 +58,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <CardTitle>Produttività nel Tempo</CardTitle>
           </CardHeader>
           <CardContent className='p-0'>
-            <ProductivityOverTimeChart productId={params.id} />
+            <ProductivityOverTimeChart productId={id} />
           </CardContent>
         </Card>
       </div>
