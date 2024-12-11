@@ -117,9 +117,9 @@ export default function Dashboard() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Dati dettagliati sulle vendite</CardTitle>
+            <CardTitle>Dati dettagliati sugli ordini</CardTitle>
             <CardDescription>
-              Panoramica completa di tutte le transazioni di vendita
+              Panoramica completa di tutti gli ordini
             </CardDescription>
           </CardHeader>
           <CardContent>
