@@ -67,7 +67,7 @@ export default function FilterBar() {
         </Select>
       </div>
       <div className='flex-1'>
-        <Input placeholder='Search products, agents, or regions...' />
+        <Input placeholder='Cerca prodotti, agenti o regioni...' />
       </div>
     </div>
   )
