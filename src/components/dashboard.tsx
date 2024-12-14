@@ -19,13 +19,14 @@ import { Download, RefreshCw } from 'lucide-react'
 import salesData from '@/lib/data/ordersData'
 import Link from 'next/link'
 import FilterBar from './ui/filter-bar'
-
+import Image from 'next/image'
+import Logo from '@/../public/images.png'
 export default function Dashboard() {
   return (
     <div className='flex min-h-screen flex-col'>
       <div className='border-b'>
-        <div className='flex h-16 items-center px-4'>
-          <h1 className='text-2xl font-bold'>Santero 958</h1>
+        <div className='flex items-center p-3'>
+          <Image src={Logo} alt='Logo' />
           <div className='ml-auto flex items-center space-x-4'>
             <Button variant='outline' size='sm'>
               <RefreshCw className='mr-2 h-4 w-4' />
