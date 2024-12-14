@@ -1,12 +1,13 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import products from '@/lib/data/productsData'
-import { ProductChart } from '@/components/product-chart'
+import { Suspense } from 'react'
+import { ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { ProductDetails } from './product-details'
+import { ProductDetailsSkeleton } from './product-details-skeleton'
+import { OrdersChart } from './orders-chart'
+import { AgentProductivityChart } from './agent-productivity-chart'
+import { ProductivityOverTimeChart } from './productivity-over-time-chart'
 
 export default async function Product({
   params,
@@ -14,33 +15,53 @@ export default async function Product({
   params: Promise<{ id: string }>
 }) {
   const id = (await params).id
-  const product = products.find(product => product.id === id)
-
-  if (!product) {
-    return <p>Product not found</p>
-  }
 
   return (
-    <div>
-      <Card>
-        <CardHeader>
-          <CardTitle>{product.name}</CardTitle>
-          <CardDescription>
-            <p>Prezzo: {product.price}</p>
-            <p>Regione: {product.region}</p>
-            <p>
-              Agenti:{' '}
-              {product.agents.map(agent => (
-                <p key={agent}>{agent}</p>
-              ))}
-            </p>
-            <p>Sconto applicato: {product.discount}</p>
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ProductChart />
-        </CardContent>
-      </Card>
+    <div className='flex flex-col gap-6 p-4 md:gap-8 md:p-10'>
+      <div className='flex items-center gap-4'>
+        <Button variant='ghost' size='icon' asChild>
+          <Link href='/products'>
+            <ArrowLeft className='h-4 w-4' />
+            <span className='sr-only'>Torna ai prodotti</span>
+          </Link>
+        </Button>
+        <h1 className='text-2xl font-bold tracking-tight'>
+          Dettagli del Prodotto
+        </h1>
+      </div>
+
+      <Suspense fallback={<ProductDetailsSkeleton />}>
+        <ProductDetails id={id} />
+      </Suspense>
+
+      <div className='grid gap-6'>
+        <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-7'>
+          <Card className='lg:col-span-4'>
+            <CardHeader>
+              <CardTitle>Panoramica degli Ordini</CardTitle>
+            </CardHeader>
+            <CardContent className='p-0'>
+              <OrdersChart productId={id} />
+            </CardContent>
+          </Card>
+          <Card className='lg:col-span-3'>
+            <CardHeader>
+              <CardTitle>Produttività dell&apos;Agente</CardTitle>
+            </CardHeader>
+            <CardContent className='p-0'>
+              <AgentProductivityChart productId={id} />
+            </CardContent>
+          </Card>
+        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Produttività nel Tempo</CardTitle>
+          </CardHeader>
+          <CardContent className='p-0'>
+            <ProductivityOverTimeChart productId={id} />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }

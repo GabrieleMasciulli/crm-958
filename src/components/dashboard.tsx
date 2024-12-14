@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import {
   Card,
   CardContent,
@@ -18,8 +19,6 @@ import { Download, RefreshCw } from 'lucide-react'
 import salesData from '@/lib/data/ordersData'
 import Link from 'next/link'
 import FilterBar from './ui/filter-bar'
-
-// Sample data - in a real app, this would come from your backend
 
 export default function Dashboard() {
   return (
@@ -123,9 +122,9 @@ export default function Dashboard() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Dati dettagliati sulle vendite</CardTitle>
+            <CardTitle>Dati dettagliati sugli ordini</CardTitle>
             <CardDescription>
-              Panoramica completa di tutte le transazioni di vendita
+              Panoramica completa di tutti gli ordini
             </CardDescription>
           </CardHeader>
           <CardContent>

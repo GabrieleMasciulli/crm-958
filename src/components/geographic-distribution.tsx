@@ -51,7 +51,6 @@ export function GeographicDistribution() {
             ))}
           </Pie>
           <ChartTooltip content={<ChartTooltipContent />} />
-
           <Legend />
         </PieChart>
       </ResponsiveContainer>
