@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import {
   Card,
   CardContent,
@@ -21,6 +20,7 @@ import Link from 'next/link'
 import FilterBar from '@/components/ui/filter-bar'
 import Image from 'next/image'
 import Logo from '@/../public/images.png'
+
 export default function Dashboard() {
   return (
     <div className='flex min-h-screen flex-col'>
@@ -131,7 +131,7 @@ export default function Dashboard() {
           <CardContent>
             <DataTable
               columns={columns}
-              data={salesData.map((sale) => ({
+              data={salesData.map(sale => ({
                 ...sale,
                 product: '',
                 amount: sale.totalPrice,
