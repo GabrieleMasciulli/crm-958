@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Calendar,
   Home,
@@ -7,6 +9,11 @@ import {
   Users,
   BadgeDollarSign,
   LandPlot,
+  ChartColumnDecreasing,
+  ChevronDown,
+  ChevronRight,
+  Moon,
+  Sun,
 } from 'lucide-react'
 
 import {
@@ -19,23 +26,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
+import { Button } from '@/components/ui/button'
+import { useTheme } from 'next-themes'
+import { useState } from 'react'
 
-// Menu items.
 const items = [
   {
     title: 'Home',
     url: '/',
     icon: Home,
-  },
-  {
-    title: 'Inbox',
-    url: '#',
-    icon: Inbox,
-  },
-  {
-    title: 'Calendar',
-    url: '#',
-    icon: Calendar,
   },
   {
     title: 'Search',
@@ -62,14 +61,37 @@ const items = [
     url: '/geo-view',
     icon: LandPlot,
   },
+  {
+    title: 'Analisi',
+    url: '/analysis',
+    icon: ChartColumnDecreasing,
+  },
 ]
 
 export function AppSidebar() {
+  const { theme, setTheme } = useTheme()
+  const [isAnalisiExpanded, setIsAnalisiExpanded] = useState(false)
+
   return (
     <Sidebar>
       <SidebarContent>
+        <div className='flex justify-start m-5'>
+          <Button
+            variant='outline'
+            size='icon'
+            className='rounded-full'
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          >
+            {theme === 'dark' ? (
+              <Sun className='h-4 w-4 text-primary' />
+            ) : (
+              <Moon className='h-4 w-4 text-primary' />
+            )}
+          </Button>
+        </div>
+        {/* Gruppo principale */}
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

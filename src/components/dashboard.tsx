@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 import { Download, RefreshCw } from 'lucide-react'
 import salesData from '@/lib/data/ordersData'
 import Link from 'next/link'
-import FilterBar from './ui/filter-bar'
+import FilterBar from '@/components/ui/filter-bar'
 import Image from 'next/image'
 import Logo from '@/../public/images.png'
 export default function Dashboard() {
@@ -56,7 +56,7 @@ export default function Dashboard() {
               </CardContent>
             </Card>
           </Link>
-          <Link href='/agents' passHref>
+          <Link href='/#' passHref>
             <Card>
               <CardHeader>
                 <CardTitle>Unità vendute</CardTitle>

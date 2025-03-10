@@ -7,14 +7,25 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@radix-ui/react-select'
+} from '@/components/ui/select'
+
 import { Input } from './ui/input'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  UserCircle2,
+  MapPin,
+  BarChart3,
+  Users,
+  BadgeDollarSign,
+} from 'lucide-react'
 
 export default function Agents() {
   return (
     <div className='p-6'>
       <h1 className='text-3xl font-bold mb-6'>Riepilogo Agenti</h1>
-      <div className='flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0'>
+
+      {/* FILTRI */}
+      <div className='flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0 pb-6'>
         <div className='flex items-center space-x-4'>
           <Select defaultValue='all'>
             <SelectTrigger className='w-[180px]'>
@@ -51,7 +62,7 @@ export default function Agents() {
 
           <Select defaultValue='all'>
             <SelectTrigger className='w-[180px]'>
-              <SelectValue placeholder='Select Agent' />
+              <SelectValue placeholder='Seleziona Agente' />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value='all'>Tutti gli agenti</SelectItem>
@@ -60,49 +71,68 @@ export default function Agents() {
             </SelectContent>
           </Select>
         </div>
+
         <div className='flex-1'>
           <Input placeholder='Cerca prodotti, agenti o regioni...' />
         </div>
       </div>
-      <div className='space-y-4'>
-        {agentSummary.map((agent, index) => (
-          <div
-            key={index}
-            className='p-4 border border-gray-300 rounded-lg shadow-md'
-          >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              viewBox='0 0 24 24'
-              fill='currentColor'
-              className='size-9'
-            >
-              <path
-                fillRule='evenodd'
-                d='M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z'
-                clipRule='evenodd'
-              />
-            </svg>
 
-            <h2 className='text-xl font-semibold mb-2'>{agent.name}</h2>
-            <p className='text-sm text-gray-600 mb-2'>
-              <strong>Vendite Totali:</strong> {agent.totalSales}
-            </p>
-            <p className='text-sm text-gray-600 mb-2'>
-              <strong>Regioni Coperte:</strong> {agent.regions.join(', ')}
-            </p>
-            <p className='text-sm text-gray-600 mb-2'>
-              <strong>Totale Venduto:</strong> €{' '}
-              {agent.totalAmount.toLocaleString()}
-            </p>
-            <p className='text-sm text-gray-600 mb-2'>
-              <strong>Numero Clienti:</strong> {agent.totalClients}
-            </p>
-            <p className='text-sm text-gray-600'>
-              <strong>Cliente con Maggior Vendite:</strong>{' '}
-              {agent.topClient.product} (€{' '}
-              {agent.topClient.amount.toLocaleString()})
-            </p>
-          </div>
+      {/* CARDS */}
+      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'>
+        {agentSummary.map((agent, index) => (
+          <Card
+            key={index}
+            className='hover:shadow-lg transition-transform duration-300 hover:-translate-y-1'
+          >
+            <CardHeader className='flex flex-row items-center gap-4 border-b pb-2'>
+              <UserCircle2 className='h-10 w-10 text-primary' />
+              <div>
+                <CardTitle className='text-lg font-semibold'>
+                  {agent.name}
+                </CardTitle>
+                <p className='text-sm text-muted-foreground'>
+                  {agent.regions.join(', ')}
+                </p>
+              </div>
+            </CardHeader>
+            <CardContent className='pt-4'>
+              <div className='grid grid-cols-2 gap-3 text-sm '>
+                <div className='flex items-center gap-2'>
+                  <BarChart3 className='w-4 h-4 text-blue-600' />
+                  <span>
+                    <strong>Vendite:</strong> {agent.totalSales}
+                  </span>
+                </div>
+
+                <div className='flex items-center gap-2'>
+                  <BadgeDollarSign className='w-4 h-4 text-green-600' />
+                  <span>
+                    <strong>Totale:</strong> €{' '}
+                    {agent.totalAmount.toLocaleString()}
+                  </span>
+                </div>
+
+                <div className='flex items-center gap-2'>
+                  <Users className='w-4 h-4 text-purple-600' />
+                  <span>
+                    <strong>Clienti:</strong> {agent.totalClients}
+                  </span>
+                </div>
+
+                <div className='flex items-center gap-2'>
+                  <MapPin className='w-4 h-4 text-orange-600' />
+                  <span>
+                    <strong>Top Cliente:</strong> {agent.topClient.product}
+                  </span>
+                </div>
+              </div>
+
+              <div className='text-xs '>
+                <em>Valore top cliente:</em> €{' '}
+                {agent.topClient.amount.toLocaleString()}
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
